@@ -2,9 +2,10 @@ var moment = require("../../moment");
 
 exports.eod_sod = {
     "sod" : function(test) {
-        test.expect(7);
+        test.expect(8);
 
-        var m = moment(new Date(2011, 1, 2, 3, 4, 5, 6)).sod();
+        var d = new Date(2011, 1, 2, 3, 4, 5, 6);
+        var m = moment(d).sod();
         test.equal(m.year(), 2011, "keep the year");
         test.equal(m.month(), 1, "keep the month");
         test.equal(m.date(), 2, "keep the day");
@@ -12,13 +13,15 @@ exports.eod_sod = {
         test.equal(m.minutes(), 0, "strip out the minutes"); 
         test.equal(m.seconds(), 0, "strip out the seconds"); 
         test.equal(m.milliseconds(), 0, "strip out the milliseconds");
+        test.equal(m.toDate(), d, "edit the original date object");
         test.done();
     },
 
     "eod" : function(test) {
-        test.expect(7);
+        test.expect(8);
 
-        var m = moment(new Date(2011, 1, 2, 3, 4, 5, 6)).eod();
+        var d = new Date(2011, 1, 2, 3, 4, 5, 6);
+        var m = moment(d).eod();
         test.equal(m.year(), 2011, "keep the year");
         test.equal(m.month(), 1, "keep the month");
         test.equal(m.date(), 2, "keep the day");
@@ -26,6 +29,7 @@ exports.eod_sod = {
         test.equal(m.minutes(), 59, "set the minutes"); 
         test.equal(m.seconds(), 59, "set the seconds"); 
         test.equal(m.milliseconds(), 999, "set the seconds");
+        test.equal(m.toDate(), d, "edit the original date object");
         test.done();
     },
 
@@ -37,4 +41,5 @@ exports.eod_sod = {
         
         test.done();
     }
+
 };

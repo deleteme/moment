@@ -811,7 +811,7 @@
         },
 
         sod: function () {
-            return moment(this)
+            return this
                 .hours(0)
                 .minutes(0)
                 .seconds(0)
